@@ -26,3 +26,5 @@ OBS: Insira o caminho da pasta .\bin\ do Make na variável Path
  Para criar o arquivo Makefile rode o comando abaixo em um prompt de comando do PowerShell.
 
     touch Makefile
+
+# Escolha quais as ações deseja fazer e transformar no arquivo
