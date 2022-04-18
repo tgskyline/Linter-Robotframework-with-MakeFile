@@ -4,11 +4,16 @@
 </h1>
 <p align="center">🚀 Forma de se usar as bibliotecas Robocop e Robotidy com Makefiles.</p>
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+## Conhecimentos necessários
 
-## Dica
+Antes de iniciar a instalação e criação do arquivo Makefile, leia mais sobre as bibiotecas [Robocop](https://github.com/MarketSquare/robotframework-robocop) , [Robotidy](https://github.com/MarketSquare/robotframework-tidy) e também sobre Makefile.
 
-Antes de iniciar a instalação e criação do arquivo Makefile, leia mais sobre as bibiotecas Robocop e Robotidy.
+## Funcionalidades
+
+- `1º`: Possibilita utilizar as duas bibliotecas de linting ao mesmos tempo
+- `2º`: Com somente uma linha de comando é possível rodar várias ações 
+- `3º`: Você pode criar várias etapas antes e depois de rodar as transformações do código
+
 ## Requisitos
 
 Faça download e instalação dos componentes abaixo
