@@ -20,7 +20,7 @@ Faça download e instalação dos componentes abaixo
 
 ### Make for Windows
 
-    http://gnuwin32.sourceforge.net/packages/make.htm
+- http://gnuwin32.sourceforge.net/packages/make.htm
 
 OBS: Insira o caminho da pasta .\bin\ do Make na variável Path
 
