@@ -22,7 +22,7 @@ Faça download e instalação dos componentes abaixo
 
 - http://gnuwin32.sourceforge.net/packages/make.htm
 
-OBS: Insira o caminho da pasta .\bin\ do Make na variável Path
+OBS: Insira o caminho da pasta C:\Program Files (x86)\GnuWin32\bin do Make na variável Path
 
 ### Robocop
 
