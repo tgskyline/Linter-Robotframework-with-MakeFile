@@ -2,7 +2,7 @@
 <h1 align="center"> Linter_Robotframework </h1>
 
 </h1>
-<p align="center">🚀 Forma de se usar as bibliotecas Robocop e Robotidy com Makefiles.</p>
+<p align="center">🚀 Rode o linter, depois seu teste e por fim um relatório de pontos que podem ser ajustados manualmente no seu código seguindo as boas práticas do Robotframework.</p>
 
 ## Conhecimentos necessários
 
