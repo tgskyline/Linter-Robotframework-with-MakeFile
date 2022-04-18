@@ -3,6 +3,11 @@
 </h1>
 <p align="center">🚀 Forma de se usar as bibliotecas Robocop e Robotidy com Makefiles.</p>
 
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
+## Dica
+
+Antes de iniciar a instalação e criação do arquivo Makefile, leia mais sobre as bibiotecas Robocop e Robotidy.
 ## Requisitos
 
 Faça download e instalação dos componentes abaixo
@@ -27,4 +32,5 @@ OBS: Insira o caminho da pasta .\bin\ do Make na variável Path
 
     touch Makefile
 
-# Escolha quais as ações deseja fazer e transformar no arquivo
+# Configurando seu arquivo Makefile
+
