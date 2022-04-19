@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220418 22:10:02.909" rpa="false" schemaversion="3">
+<suite id="s1" name="Teste Feio" source="C:\Users\tiago.santos\OneDrive\Documentos\Automação de Testes\RobotFramework\Linter_Robotframework\Teste_Feio.robot">
+<kw name="Start Session" type="SETUP">
+<arg>host=${IPADDRESS}</arg>
+<arg>user=${USERNAME}</arg>
+<arg>password=${PASSWORD}</arg>
+<msg timestamp="20220418 22:10:03.041" level="FAIL">No keyword with name 'Start Session' found.</msg>
+<status status="FAIL" starttime="20220418 22:10:03.041" endtime="20220418 22:10:03.041"/>
+</kw>
+<test id="s1-t1" name="Keyword" line="27">
+<status status="FAIL" starttime="20220418 22:10:03.041" endtime="20220418 22:10:03.042">Parent suite setup failed:
+No keyword with name 'Start Session' found.</status>
+</test>
+<kw name="Close Session" type="TEARDOWN">
+<msg timestamp="20220418 22:10:03.046" level="FAIL">No keyword with name 'Close Session' found.</msg>
+<status status="FAIL" starttime="20220418 22:10:03.046" endtime="20220418 22:10:03.046">No keyword with name 'Close Session' found.</status>
+</kw>
+<doc>Example using the space separated format.
+and this documentation is multiline
+where this line should go I wonder?</doc>
+<status status="FAIL" starttime="20220418 22:10:02.912" endtime="20220418 22:10:03.046">Suite setup failed:
+No keyword with name 'Start Session' found.
+
+Also suite teardown failed:
+No keyword with name 'Close Session' found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Teste Feio">Teste Feio</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220418 22:10:03.037" level="ERROR">Error in file 'C:\Users\tiago.santos\OneDrive\Documentos\Automação de Testes\RobotFramework\Linter_Robotframework\Teste_Feio.robot' on line 7: Library 'Collections' expected 0 arguments, got 3.</msg>
+</errors>
+</robot>
