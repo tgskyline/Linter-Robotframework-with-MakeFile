@@ -53,50 +53,49 @@ OBS: Insira o caminho da pasta C:\Program Files (x86)\GnuWin32\bin do Make na va
 Você pode utilizar como base a configuração abaixo, mas poderá customizar inserindo as linhas de comandos que mais utiliza
 
     Lint: 
-	    @echo *********************************************** RODANDO ROBOTIDY ***********************************************
+	    @echo ********************************* RODANDO ROBOTIDY *********************************
 	    robotidy '$(src)'
-	    @echo *********************************************** RODANDO TRANSFORM ***********************************************
+	    @echo ********************************* RODANDO TRANSFORM ********************************
 	    robotidy --transform NormalizeSectionHeaderName '$(src)'
 	    robotidy --configure NormalizeSectionHeaderName:uppercase=True '$(src)'
 	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
 	    robotidy --transform AlignTestCases '$(src)'
 	    robotidy --transform OrderTags '$(src)'
-	    @echo *********************************************** RODANDO TESTE ***********************************************
+	    @echo ********************************* RODANDO TESTE ************************************
 	    robot -d '.\Logs\' '$(src)'	
-	    @echo *********************************************** RELATORIO FINAL DO ROBOCOP ***********************************************
+	    @echo ********************************* RELATORIO FINAL DO ROBOCOP ***********************
 	    robocop '$(src)' --reports all
 
 
     GitAdd:
-	    @echo *********************************************** RODANDO ROBOTIDY ***********************************************
+	     @echo ********************************* RODANDO ROBOTIDY *********************************
 	    robotidy '$(src)'
-	    @echo *********************************************** RODANDO TRANSFORM ***********************************************
-	    robotidy --transform AlignTestCases '$(src)'
-	    robotidy --configure AlignSettingsSection:up_to_column=10 '$(src)'
+	    @echo ********************************* RODANDO TRANSFORM *********************************
+	    robotidy --transform NormalizeSectionHeaderName '$(src)'
+	    robotidy --configure NormalizeSectionHeaderName:uppercase=True '$(src)'
 	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
 	    robotidy --transform AlignTestCases '$(src)'
 	    robotidy --transform OrderTags '$(src)'
-	    @echo *********************************************** RODANDO TESTE ***********************************************
+	    @echo ******************************** RODANDO TESTE **************************************
 	    robot -d './Logs/' '$(src)'	
-	    @echo *********************************************** ADCIONANDO ARQUIVOS NO STAGE ***********************************************
+	    @echo ******************************** ADCIONANDO ARQUIVOS NO STAGE ***********************
 	    git add *
 
 # Variáveis e Constantes no MakeFile
 
 Para rodar o linter basta configurar o caminho que deseja salvar os logs nessa campo do Makefile
 
-	    @echo *********************************************** RODANDO TESTE ***********************************************
+	    @echo ******************************** RODANDO TESTE *************************************
 	    robot -d './Logs/' '$(src)'	
 	    
 Para rodar os comandos pelo Makefile há uma variável '${src}' que você deverá inserir o caminho do arquivo ou diretório que deseja rodar
 
-Exemplos
+Exemplos:
 
     make src=.\testsapi\teste.robot
 </d>
 
     make src=.\testsapi\
-
 # Rodando o Linter
 
 Para rodar somente o Linter utilize o comando 
