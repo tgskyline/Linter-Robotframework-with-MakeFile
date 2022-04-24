@@ -1,13 +1,12 @@
 ![Badge](https://img.shields.io/github/issues/tgskyline/Linter-Robotframework)  ![Badge](https://img.shields.io/github/forks/tgskyline/Linter-Robotframework)  ![Badge](https://img.shields.io/github/stars/tgskyline/Linter-Robotframework)
 <h1 align="center"> Linter_Robotframework </h1>
 
-</h1>
-<p align="center">🚀 Com um comando rode:
+<h2> <p align="center">🚀 Com um comando rode:</p> </h1>
 
 - Linter (Robotidy) 
 - Rode seu teste 
 - Relatório de Análise do Código Estático (Robocop) 
-- Adcione os arquivo na área de Stage do Git.</p>
+- Adcione os arquivo na área de Stage do Git.
 
 ## Conhecimentos necessários
 
