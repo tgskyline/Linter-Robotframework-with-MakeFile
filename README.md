@@ -83,7 +83,7 @@ Para rodar o linter basta configurar o caminho que deseja salvar os logs nessa c
 	    @echo ******************************** RODANDO TESTE *************************************
 	    robot -d './Logs/' '$(src)'	
 	    
-Para rodar os comandos pelo Makefile há uma variável '${src}' que você deverá inserir o caminho do arquivo ou diretório que deseja rodar
+Para rodar os comandos pelo Makefile há uma variável '$(src)' que você deverá inserir o caminho do arquivo ou diretório que deseja rodar
 
 Exemplos:
 
