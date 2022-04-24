@@ -68,7 +68,7 @@ Você pode utilizar como base a configuração abaixo, mas poderá customizar in
 
 
     GitAdd:
-	     @echo ********************************* RODANDO ROBOTIDY *********************************
+	    @echo ********************************* RODANDO ROBOTIDY **********************************
 	    robotidy '$(src)'
 	    @echo ********************************* RODANDO TRANSFORM *********************************
 	    robotidy --transform NormalizeSectionHeaderName '$(src)'
