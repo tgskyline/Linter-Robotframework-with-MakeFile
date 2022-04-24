@@ -52,7 +52,7 @@ OBS: Insira o caminho da pasta C:\Program Files (x86)\GnuWin32\bin do Make na va
 
 Você pode utilizar como base a configuração abaixo, mas poderá customizar inserindo as linhas de comandos que mais utiliza
 
-    Lint: 
+    Linter: 
 	    @echo ********************************* RODANDO ROBOTIDY *********************************
 	    robotidy '$(src)'
 	    @echo ********************************* RODANDO TRANSFORM ********************************
@@ -100,7 +100,7 @@ Exemplos:
 
 Para rodar somente o Linter utilize o comando 
 
-    make linter src=.\testsapi\
+    make Linter src=.\testsapi\
 
 # Rodando o Linter + Git Add
 
