@@ -2,7 +2,12 @@
 <h1 align="center"> Linter_Robotframework </h1>
 
 </h1>
-<p align="center">🚀 Rode o linter, depois seu teste e por fim um relatório de pontos que podem ser ajustados manualmente no seu código seguindo as boas práticas do Robotframework.</p>
+<p align="center">🚀 Com um comando rode:
+
+- Linter (Robotidy) 
+- Rode seu teste 
+- Relatório de Análise do Código Estático (Robocop) 
+- Adcione os arquivo na área de Stage do Git.</p>
 
 ## Conhecimentos necessários
 
@@ -10,9 +15,9 @@ Antes de iniciar a instalação e criação do arquivo Makefile, leia mais sobre
 
 ## Funcionalidades
 
-- `1º`: Possibilita utilizar as duas bibliotecas de linting ao mesmos tempo
-- `2º`: Com somente uma linha de comando é possível rodar várias ações 
-- `3º`: Você pode criar várias etapas antes e depois de rodar as transformações do código
+- `1º` Possibilita utilizar as duas bibliotecas de linting ao mesmos tempo
+- `2º` Com somente uma linha de comando é possível rodar várias ações 
+- `3º` Você pode criar várias etapas antes e depois de rodar as transformações do código
 
 ## Requisitos
 
@@ -37,6 +42,11 @@ OBS: Insira o caminho da pasta C:\Program Files (x86)\GnuWin32\bin do Make na va
  Para criar o arquivo Makefile rode o comando abaixo em um prompt de comando do PowerShell.
 
     touch Makefile
+
+# Caracteristicas de usar o Makefile
+
+-   Você poderá rodar várias linhas de comando com somente uma chamada
+-   Por default o makefile não avança para o próximo comando a ser executado caso encotre algum erro, erro que pode ser causado por exemplo pela execução do teste. Então se houver algum erro no seu teste ele não rodar os comandos que sucedem ele, no meu exemplo abaixo para o Linter não irá rodar o relatório do Robocop e para o GitAdd não irá rodar o Git Add * para o stage.
 
 # Configurando seu arquivo Makefile
 
@@ -70,4 +80,34 @@ Você pode utilizar como base a configuração abaixo, mas poderá customizar in
 	    robot -d './Logs/' '$(src)'	
 	    @echo *********************************************** ADCIONANDO ARQUIVOS NO STAGE ***********************************************
 	    git add *
+
+# Variáveis e Constantes no MakeFile
+
+Para rodar o linter basta configurar o caminho que deseja salvar os logs nessa campo do Makefile
+
+	    @echo *********************************************** RODANDO TESTE ***********************************************
+	    robot -d './Logs/' '$(src)'	
+	    
+Para rodar os comandos pelo Makefile há uma variável '${src}' que você deverá inserir o caminho do arquivo ou diretório que deseja rodar
+
+Exemplos
+
+    make src=.\testsapi\teste.robot
+</d>
+
+    make src=.\testsapi\
+
+# Rodando o Linter
+
+Para rodar somente o Linter utilize o comando 
+
+    make linter src=.\testsapi\
+
+# Rodando o Linter + Git Add
+
+Para rodar o Linter e ainda adicionar os arquivos na área de Stage utilize o comando
+
+    make GitAdd src=.\testsapi\
+
+
 
