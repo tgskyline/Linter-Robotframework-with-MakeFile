@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 5.0 (Python 3.10.4 on win32)" name="Generator">
+<meta content="Robot Framework 4.1.3 (Python 3.10.2 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -318,9 +318,6 @@ th.stats-col-graph:hover {
     top: 0;
     padding: 3px;
     cursor: default;
-}
-.element-header .label {
-    margin-right: 0.5em;
 }
 .name {
     font-weight: bold;
@@ -969,7 +966,6 @@ window.model = (function () {
     }
     function Keyword(data) {
         var kw = createModelObject(data);
-        var flatTypes = ['RETURN', 'BREAK', 'CONTINUE'];
         kw.libname = data.libname;
         kw.fullName = (kw.libname ? kw.libname + '.' : '') + kw.name;
         kw.type = data.type;
@@ -1354,8 +1350,8 @@ window.testdata = function () {
     var _statistics = null;
     var LEVELS = ['TRACE', 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FAIL', 'SKIP'];
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
-    var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF', 'ELSE IF', 'ELSE', 'RETURN',
-                         'TRY', 'EXCEPT', 'FINALLY', 'WHILE', 'CONTINUE', 'BREAK'];
+    var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'VAR', 'IF', 'ELSE IF', 'ELSE'];
+    var MESSAGE_TYPE = 8;
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1376,10 +1372,10 @@ window.testdata = function () {
                 elapsed];
     }
     function createMessage(element, strings) {
-        return model.Message(LEVELS[element[1]],
-                             util.timestamp(element[0]),
-                             strings.get(element[2]),
-                             strings.get(element[3]));
+        return model.Message(LEVELS[element[2]],
+                             util.timestamp(element[1]),
+                             strings.get(element[3]),
+                             strings.get(element[4]));
     }
     function parseStatus(stats) {
         return STATUSES[stats[0]];
@@ -1390,7 +1386,7 @@ window.testdata = function () {
         };
     }
     function createBodyItem(parent, element, strings, index) {
-        if (element.length < 5)
+        if (element[0] == MESSAGE_TYPE)
             return createMessage(element, strings);
         var messages = util.filter(parent.children(), function (child) {
             return child.type == 'message';
@@ -1803,25 +1799,25 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,4,[],[0,0,134,5],[],[[6,0,0,[],[0,129,1,7],[]]],[[1,8,0,0,0,9,0,0,[0,129,0],[[129,5,10]]],[2,11,0,0,0,0,0,0,[0,134,0,12],[[134,5,12]]]],[1,0,1,0]];
+window.output["suite"] = [1,2,3,4,[],[0,0,163,5],[],[[6,0,7,[8],[0,157,1,9],[]],[10,0,11,[12],[0,159,0,9],[]]],[[1,13,0,0,0,14,0,0,[0,157,0],[[8,157,5,15]]],[2,16,0,0,0,0,0,0,[0,163,0,17],[[8,163,5,17]]]],[2,0,2,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Teste Feio","*C:\\Users\\tiago.santos\\OneDrive\\Documentos\\Automação de Testes\\RobotFramework\\Linter_Robotframework\\Teste_Feio.robot","*../Teste_Feio.robot","*<p>Example using the space separated format. and this documentation is multiline where this line should go I wonder?\x3c/p>","*Suite setup failed:\nNo keyword with name 'Start Session' found.\n\nAlso suite teardown failed:\nNo keyword with name 'Close Session' found.","*Keyword","eNqFzDEKwzAMBdDdp/hbthygW+keAjmBwD/U1JGCJWNy+6ylS98B3iqNGvBegnBGP7FLqcyPtBg+vIa1jFHiDZWDmLaQFtjoXkwn7NY1zyk9qxvO7ywoLdvQP9+rmvP3uwHcgDVt","*Start Session","*host=${IPADDRESS}, user=${USERNAME}, password=${PASSWORD}","*No keyword with name 'Start Session' found.","*Close Session","*No keyword with name 'Close Session' found.","*Error in file 'C:\\Users\\tiago.santos\\OneDrive\\Documentos\\Automação de Testes\\RobotFramework\\Linter_Robotframework\\Teste_Feio.robot' on line 7: Library 'Collections' expected 0 arguments, got 3."]);
+window.output["strings"] = window.output["strings"].concat(["*","*Teste Feio","*C:\\Users\\Tiago Gomes\\OneDrive\\Documentos\\Automação de Testes\\RobotFramework\\Linter_Robotframework\\Teste_Feio.robot","*../Teste_Feio.robot","*<p>Example using the space separated format. and this documentation is multiline where this line should go I wonder?\x3c/p>","*Suite setup failed:\nNo keyword with name 'Start Session' found.\n\nAlso suite teardown failed:\nNo keyword with name 'Close Session' found.","*Test1","*<p>Validate Test1\x3c/p>","*sanity","eNqFzDEKwzAMBdDdp/hbthygW+keAjmBwD/U1JGCJWNy+6ylS98B3iqNGvBegnBGP7FLqcyPtBg+vIa1jFHiDZWDmLaQFtjoXkwn7NY1zyk9qxvO7ywoLdvQP9+rmvP3uwHcgDVt","*Test2","*<p>Validate Test2\x3c/p>","*smoke","*Start Session","*host=${IPADDRESS}, user=${USERNAME}, password=${PASSWORD}","*No keyword with name 'Start Session' found.","*Close Session","*No keyword with name 'Close Session' found.","*Error in file 'C:\\Users\\Tiago Gomes\\OneDrive\\Documentos\\Automação de Testes\\RobotFramework\\Linter_Robotframework\\Teste_Feio.robot' on line 7: Library 'Collections' expected 0 arguments, got 3."]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:00","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:00","fail":1,"id":"s1","label":"Teste Feio","name":"Teste Feio","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:00","fail":2,"label":"All Tests","pass":0,"skip":0}],[{"elapsed":"00:00:00","fail":1,"label":"sanity","pass":0,"skip":0},{"elapsed":"00:00:00","fail":1,"label":"smoke","pass":0,"skip":0}],[{"elapsed":"00:00:00","fail":2,"id":"s1","label":"Teste Feio","name":"Teste Feio","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [[125,4,13]];
+window.output["errors"] = [[8,153,4,18]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1650330602912;
+window.output["baseMillis"] = 1650798232718;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 144;
+window.output["generated"] = 177;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2127,7 +2123,7 @@ function addExecutionLog(main) {
     <div class="element-header closed" onclick="toggleKeyword('${id}')">
       <div class="element-header-left" title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
         <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">${type}</span>
+        <span class="label keyword ${status.toLowerCase()}">${type}</span>
         <span>{{html assign}}</span>
         <span class="name"><span class="parent-name">{{html libname}}{{if libname}} . {{/if}}</span>{{html name}}</span>
         <span class="arg">{{html arguments}}</span>
@@ -2135,7 +2131,7 @@ function addExecutionLog(main) {
       <div class="element-header-right" onclick="stopPropagation(event)">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this item" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" title="Link to this keyword" href="#${id}" onclick="makeElementVisible('${id}')"></a>
       </div>
       <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
