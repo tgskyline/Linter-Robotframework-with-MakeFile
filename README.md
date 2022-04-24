@@ -56,8 +56,8 @@ Você pode utilizar como base a configuração abaixo, mas poderá customizar in
 	    robotidy '$(src)'
 	    @echo ********************************* RODANDO TRANSFORM ********************************
 	    robotidy --transform NormalizeSectionHeaderName '$(src)'
-		robotidy --transform AlignTestCases '$(src)'
-		robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
+            robotidy --transform AlignTestCases '$(src)'
+	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
 	    @echo ********************************* RODANDO TESTE ************************************
 	    robot -d '.\Logs\' '$(src)'	
 	    @echo ********************************* RELATORIO FINAL DO ROBOCOP ***********************
@@ -69,8 +69,8 @@ Você pode utilizar como base a configuração abaixo, mas poderá customizar in
 	    robotidy '$(src)'
 	    @echo ********************************* RODANDO TRANSFORM *********************************
 	    robotidy --transform NormalizeSectionHeaderName '$(src)'
-		robotidy --transform AlignTestCases '$(src)'
-		robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
+	    robotidy --transform AlignTestCases '$(src)'
+	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
 	    @echo ******************************** RODANDO TESTE **************************************
 	    robot -d './Logs/' '$(src)'	
 	    @echo ******************************** ADCIONANDO ARQUIVOS NO STAGE ***********************
