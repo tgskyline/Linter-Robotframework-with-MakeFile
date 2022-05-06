@@ -51,30 +51,30 @@ OBS: Insira o caminho da pasta C:\Program Files (x86)\GnuWin32\bin do Make na va
 
 Você pode utilizar como base a configuração abaixo, mas poderá customizar inserindo as linhas de comandos que mais utiliza
 
-    Linter: 
-	    @echo ********************************* RODANDO ROBOTIDY *********************************
-	    robotidy '$(src)'
-	    @echo ********************************* RODANDO TRANSFORM ********************************
-	    robotidy --transform NormalizeSectionHeaderName '$(src)'
-        robotidy --transform AlignTestCases '$(src)'
-	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
-	    @echo ********************************* RODANDO TESTE ************************************
-	    robot -d '.\Logs\' '$(src)'	
-	    @echo ********************************* RELATORIO FINAL DO ROBOCOP ***********************
-	    robocop '$(src)' --reports all
+	Lint:
+		@echo *********************************************** RODANDO ROBOTIDY ***********************************************
+		robotidy '$(src)'
+		@echo *********************************************** RODANDO TRANSFORM ***********************************************
+		robotidy --transform NormalizeSectionHeaderName '$(src)'
+		robotidy --transform AlignTestCases '$(src)'
+		robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
+		@echo *********************************************** RODANDO TESTE ***********************************************
+		robot -d '.\Results\Api\' '$(src)'
+		@echo *********************************************** RELATORIO FINAL DO ROBOCOP ***********************************************
+		robocop '$(src)' --reports all
 
-
-    GitAdd:
-	    @echo ********************************* RODANDO ROBOTIDY **********************************
-	    robotidy '$(src)'
-	    @echo ********************************* RODANDO TRANSFORM *********************************
-	    robotidy --transform NormalizeSectionHeaderName '$(src)'
-	    robotidy --transform AlignTestCases '$(src)'
-	    robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
-	    @echo ******************************** RODANDO TESTE **************************************
-	    robot -d './Logs/' '$(src)'	
-	    @echo ******************************** ADCIONANDO ARQUIVOS NO STAGE ***********************
-	    git add *
+	GitAdd:
+		@echo *********************************************** RODANDO ROBOTIDY ***********************************************
+		robotidy '$(src)'
+		@echo *********************************************** RODANDO TRANSFORM ***********************************************
+		robotidy --transform NormalizeSectionHeaderName '$(src)'
+		robotidy --transform AlignTestCases '$(src)'
+		robotidy --configure AlignSettingsSection:argument_indent=0 '$(src)'
+		@echo *********************************************** RODANDO TESTE ***********************************************
+		robot -d '.\Results\Api\' '$(src)'
+		@echo *********************************************** ADCIONANDO ARQUIVOS NO STAGE ***********************************************
+		git add *
+		git status
 
 # Variáveis e Constantes no MakeFile
 
